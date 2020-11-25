@@ -15,11 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.urls import include
 from graphene_django.views import GraphQLView
 
+from django_graphql import settings
 from django_graphql.schema import schema
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('graphql/', GraphQLView.as_view(graphiql=True, schema=schema)),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+
+    urlpatterns = [
+                      url(r'^__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns
