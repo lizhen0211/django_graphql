@@ -25,12 +25,6 @@ class BookInput(graphene.InputObjectType):
     author = graphene.String(required=True)
 
 
-# 定义动作，类似POST, PUT, DELETE
-class BookInput(graphene.InputObjectType):
-    title = graphene.String(required=True)
-    author = graphene.String(required=True)
-
-
 class CreateBook(graphene.Mutation):
     # api的输入参数
     class Arguments:

@@ -6,6 +6,7 @@ from django.db import models
 # Create your models here.
 
 class Title(models.Model):
+    id = models.CharField(primary_key=True, default=uuid.uuid1().hex, max_length=32)
     title = models.CharField(max_length=255, verbose_name="标题")
 
     def __str__(self):
@@ -13,6 +14,7 @@ class Title(models.Model):
 
 
 class Author(models.Model):
+    id = models.CharField(primary_key=True, default=uuid.uuid1().hex, max_length=32)
     name = models.CharField(max_length=255, verbose_name="作者姓名")
 
     def __str__(self):
